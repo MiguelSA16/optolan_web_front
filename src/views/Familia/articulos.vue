@@ -1,9 +1,7 @@
 <template>
     <div>
         <v-container>
-            <v-row>
-               
-                
+            <v-row>   
                 <!--<v-col cols="12">
                     <v-card class="flex justify-space-between align-center flex-wrap">
                         <v-card-text >
@@ -148,11 +146,15 @@
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex';
 import MenuFamilias from '../../components/MenuFamilias.vue';
+import DefaulLayout from '@/layouts/Default.vue';
 export default {
   components: { MenuFamilias },
     data() {
         return {
         }
+    },
+     created() {
+        this.$emit(`update:layout`, DefaulLayout);
     },
 
     computed: {

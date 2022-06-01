@@ -47,6 +47,13 @@ const routes = [
     component: function(){
       return import('../views/Administracion/index.vue')
     }
+  },
+  {
+    path: '/administracion/articulos/agrupar',
+    name: 'agrupar',
+    component: function(){
+      return import('../views/Administracion/Articulos/agrupar.vue')
+    }
   }
   
 ]

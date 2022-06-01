@@ -1,8 +1,6 @@
 
 <template>
-  <div>
-
-        
+  <div>      
 
             <v-list  >
                 <v-list-item dense to="#" link v-for="j in 2" :key="j" >

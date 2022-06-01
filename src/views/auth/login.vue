@@ -1,12 +1,9 @@
 <template>
-    <v-container fluid >
-           
+    <v-container fluid >           
         <v-container>
-            
             <v-row class=" justify-center">
                 <v-card width="550" class=" my-10">
                     <v-alert
-                        border="left"
                         dismissible
                         :type="alertData.type"
                         class="mt-2 mb-0 mx-4"
@@ -14,7 +11,6 @@
                         :value="alertData.value"                                        
                     >
                         {{alertData.message}}
-
                     </v-alert> 
                     <v-card-title class="d-block">
                         <h6 class=" text-h6 text-center">
@@ -24,8 +20,7 @@
                             Log in with email and password
                         </h6>                     
                     </v-card-title>
-                    <v-card-text class="grey--text text--darken-3 pt-4">         
-
+                    <v-card-text class="grey--text text--darken-3 pt-4">  
                         <v-text-field 
                             dense 
                             outlined 
@@ -34,8 +29,7 @@
                             :rules="[rules.email]"  
                             v-model="formLogin.email"
                         >                        
-                        </v-text-field>
-                        
+                        </v-text-field>                        
                         <v-text-field
                             :append-icon="mostrarPassword ? 'mdi-eye' : 'mdi-eye-off'"
                             :type="mostrarPassword ? 'text' : 'password'"
@@ -67,6 +61,7 @@
 <script>
 import axios from 'axios'
 import { mapState, mapMutations } from 'vuex'
+import AuthLayout from "@/layouts/Auth.vue";
 export default {
     data() {
         return {
@@ -90,7 +85,9 @@ export default {
             }
         }
     },
-
+    created() {
+        this.$emit(`update:layout`, AuthLayout);
+    },
     computed:{
         ...mapState(['url'])
     },

@@ -4,7 +4,7 @@
         <div class="container py-0 px-0">
             <Navegacion />            
         </div>
-            <slot/>
+            <slot></slot>
     </div>
 
 </template>

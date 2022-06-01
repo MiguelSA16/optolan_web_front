@@ -1,6 +1,9 @@
-<template>
-    <h1> Bienvenido a admnistracion</h1>
-</template>
+
+ <template>
+    <v-container fluid>
+        <h1> Bienvenido a admnistracion</h1>
+    </v-container>
+ </template>
 
 <script>
 

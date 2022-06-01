@@ -35,7 +35,6 @@ export default {
             
         }
     },
-
     created() {
         this.$emit(`update:layout`, DefaulLayout);
     },

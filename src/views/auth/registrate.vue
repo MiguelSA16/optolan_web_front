@@ -5,8 +5,7 @@
             
             <v-row class=" justify-center">
                 <v-card width="550" class=" my-10">
-                    <v-alert
-                        border="left"
+                    <v-alert 
                         dismissible
                         :type="alertData.type"
                         class="mt-2 mb-0 mx-4"
@@ -131,6 +130,7 @@
 
 <script>
 import { mapActions,mapMutations,mapState } from 'vuex';
+import AuthLayout from "@/layouts/Auth.vue";
 import axios from "axios";
 
 export default {
@@ -153,8 +153,7 @@ export default {
             passwordRules: [
                 v => !!v || 'se requiere contraseña',
                 v => (v && v.length >= 8) || 'Utiliza ocho caracteres como mínimo.',
-            ],
-                        
+            ],                        
             rules: {
                 valid:true,
                 required: value => !!value || "Required",
@@ -168,6 +167,9 @@ export default {
                 }
             }            
         }
+    },
+    created() {
+        this.$emit(`update:layout`, AuthLayout);
     },
     computed:{
         ...mapState(['url']),
