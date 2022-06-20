@@ -32,11 +32,18 @@ const routes = [
       return import('../views/auth/login.vue')
     }
   },
+  //Rutas de familias
   {
     path: '/familia/:slug/articulos',
     name: 'Familia.slug',
     component: function(){
-      return import('../views/Familia/articulos.vue')
+      return import('../views/familias/Articulos.vue')
+    }
+  },
+  {
+    path: '/nuestros-productos',
+    component: function(){
+      return import('../views/familias/ListarFamilias.vue')
     }
   },
 
