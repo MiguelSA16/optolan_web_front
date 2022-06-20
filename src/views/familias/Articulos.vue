@@ -39,6 +39,10 @@
                             Inicio
                         </v-breadcrumbs-item>
                         <v-breadcrumbs-divider>/</v-breadcrumbs-divider>
+                        <v-breadcrumbs-item to="/nuestros-productos"> 
+                            Familias
+                        </v-breadcrumbs-item>
+                        <v-breadcrumbs-divider>/</v-breadcrumbs-divider>
 
                         <!--Familia -->
                         <v-breadcrumbs-item v-if="familia.familia != null">
