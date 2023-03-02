@@ -13,7 +13,7 @@
             :headers="headers"
             :items="articulos"
             :search="search"
-            item-key="nombre"
+            item-key="id"
             class="elevation-1"
             v-model="selected"
             show-select        

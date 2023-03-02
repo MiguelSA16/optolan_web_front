@@ -184,7 +184,7 @@ import MenuFamilias from './MenuFamilias.vue'
 
         },
 
-        mounted(){
+        created(){
             this.getFamilias()
         },
 
@@ -216,7 +216,7 @@ import MenuFamilias from './MenuFamilias.vue'
                         console.log(response.data)
                         localStorage.clear();
                         
-                        //Asignar valores null a 
+                        //Asignar valores null a USER
                         const user ={
                             name: null,
                             role_id: null

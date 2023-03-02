@@ -1,5 +1,44 @@
 <template>
     <div>
+         <v-container fluid class="grey lighten-3 py-0 mt-2">
+                <v-container class="py-2">
+                    <v-breadcrumbs  class="px-1 py-1 text-uppercase "> 
+                            <v-breadcrumbs-item to="/"> 
+                                Inicio
+                            </v-breadcrumbs-item>
+                            <v-breadcrumbs-divider>/</v-breadcrumbs-divider>
+                            <v-breadcrumbs-item to="/nuestros-productos"> 
+                                Familias
+                            </v-breadcrumbs-item>
+                            <v-breadcrumbs-divider>/</v-breadcrumbs-divider>
+
+                            <!--Familia -->
+                            <v-breadcrumbs-item 
+                                v-if="familia.familia != null"
+                                :to="'/familia/'+familia.familia.url+'/categorias'"
+                            >
+                                {{familia.familia.nomfam}}
+                            </v-breadcrumbs-item>  
+                            <v-breadcrumbs-divider v-if="familia.familia != null">/</v-breadcrumbs-divider>  
+                                                    
+                            <!--Categoria-->
+                            <v-breadcrumbs-item 
+                                v-if="familia.categoria != null" 
+                                :to="'/familia/'+familia.categoria.url+'/categorias'"
+                                @click="cargarCategorias(familia.categoria.url)"
+                            >
+                                {{familia.categoria.nomfam}}
+                                
+                            </v-breadcrumbs-item>
+                            <v-breadcrumbs-divider v-if="familia.categoria != null">/</v-breadcrumbs-divider>
+                                                    
+                            <!--Familia Actual--> 
+                            <v-breadcrumbs-item >
+                                {{familia.nombre}}
+                            </v-breadcrumbs-item>                               
+                        </v-breadcrumbs> 
+                </v-container>
+        </v-container>
         <v-container>
             <v-row>   
                 <!--<v-col cols="12">
@@ -12,7 +51,7 @@
                         </v-card-text>
                     </v-card>
                 </v-col>-->
-                <v-col xl="2" lg="3" md="3" class=" hidden-xs-only " >
+                <v-col cols="2" class=" hidden-xs-only " >
                     <v-card>
                         <v-card-title class=" subtitle-2 pb-1">
                             Categorias
@@ -33,34 +72,7 @@
                     </v-card>
                 </v-col>
                 
-                <v-col xl="10" cols="9" class=" mx-auto">
-                    <v-breadcrumbs class="px-1 py-1 text-uppercase"> 
-                        <v-breadcrumbs-item to="/"> 
-                            Inicio
-                        </v-breadcrumbs-item>
-                        <v-breadcrumbs-divider>/</v-breadcrumbs-divider>
-                        <v-breadcrumbs-item to="/nuestros-productos"> 
-                            Familias
-                        </v-breadcrumbs-item>
-                        <v-breadcrumbs-divider>/</v-breadcrumbs-divider>
-
-                        <!--Familia -->
-                        <v-breadcrumbs-item v-if="familia.familia != null">
-                            {{familia.familia.nomfam}}
-                        </v-breadcrumbs-item>  
-                        <v-breadcrumbs-divider v-if="familia.familia != null">/</v-breadcrumbs-divider>  
-                                                
-                        <!--Categoria-->
-                        <v-breadcrumbs-item v-if="familia.categoria != null">
-                            {{familia.categoria.nomfam}}
-                        </v-breadcrumbs-item>
-                        <v-breadcrumbs-divider v-if="familia.categoria != null">/</v-breadcrumbs-divider>
-                                                
-                        <!--Familia Actual--> 
-                        <v-breadcrumbs-item to="/">
-                            {{familia.nombre}}
-                        </v-breadcrumbs-item>                               
-                    </v-breadcrumbs> 
+                <v-col cols="10" class=" mx-auto">               
                     <v-row>                        
                         <v-col cols="12">                            
                             <div class=" d-flex align-center">
@@ -68,15 +80,20 @@
                                 <h1 class="text-h6  ">{{familia.nombre}}</h1>                                
                             </div>                                       
                         </v-col>                        
-                        <v-col cols="12" md="6" xl="3"  v-for="articulo in articulosFam" :key="articulo.id">
-                            <v-card elevation="3" min-width="250">
-                                <v-img                           
-                                    class=" mx-auto my-auto"
-                                    :src="'http://www.optolan.es/images/articulos/'+articulo.imagen"                                        
-                                    height="250"
-                                    width="250"
-                                >
-                                </v-img>
+                        <v-col  align-self cols="12"  md="6" sm="6" lg="4" xl="3"  v-for="articulo in articulosFam" :key="articulo.id">
+                            <v-card 
+                                elevation="3"
+                                min-width="300"    
+                            >
+                                <div style="height:250">
+                                    <v-img                           
+                                        class=" mx-auto my-auto"
+                                        :src="'http://www.optolan.es/images/articulos/'+articulo.imagen"                                       
+                                        
+                                    >
+                                    </v-img>
+                                </div>
+                               
 
                                 <v-card-text>                                    
                                     <h2 class="grey--text text--darken-3 text-subtitle-1 font-weight-medium h-titulo" >
@@ -117,22 +134,22 @@
                                         </v-chip>
                                     </v-chip-group>                         
                                 </v-card-text>
-                                <v-card-actions class="grey lighten-3" dark>                                    
+                                <v-card-actions class="grey lighten-3 m-auto" dark>                                    
                                     <v-btn text >
                                         <v-icon color=" red darken-2" >
                                             mdi-file-download-outline
                                         </v-icon>                                        
                                         F. tecnica
-                                        <v-icon color=" green darken-1 " >
+                                        <v-icon color=" green darken-1 " dense >
                                             mdi-check
                                         </v-icon>
                                     </v-btn>
-                                    <v-btn text >
-                                        <v-icon  color="yellow darken-4">
+                                    <v-btn text class="my-0" >
+                                        <v-icon  color="yellow darken-4"  >
                                             mdi-file-certificate-outline
                                         </v-icon>
                                         Certicado
-                                        <v-icon color="red  darken-2 " >
+                                        <v-icon color="red darken-2 " dense>
                                             mdi-close
                                         </v-icon>
                                     </v-btn>
@@ -189,7 +206,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .h-titulo{
         height: 70px;
     }
@@ -201,6 +218,10 @@ export default {
     .titulo{
         height: 100px;
     }
-
+    .v-btn:not(.v-btn--round).v-size--default {
+        height: 36px;
+        min-width: 64px;
+        padding: 0 5px;
+    }
     
 </style>

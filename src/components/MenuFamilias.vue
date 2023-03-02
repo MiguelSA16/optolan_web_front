@@ -112,14 +112,14 @@ export default {
     },
     
     mounted(){
-        this.getFamilias()
+        //this.getFamilias()
     },
 
     methods:{
 
         
         ...mapActions([
-            'getFamilias',
+            //'getFamilias',
             'getArticulosFamilia',
         ]),
 

@@ -11,12 +11,23 @@ export default new Vuex.Store({
 
     state: {
         url: `${process.env.VUE_APP_URL}`,
-        modalFam:false,    
+        modalFam:false,  
+
+        /*Almacena el listado de todas la Familias 
+        con sus Caetegorias y subcategorias*/  
         familias: [],
+        
+        /*Guardad datos del familia selecionada todos 
+        los articulos en ArticulosFam y Familia en familia*/
         familia:{},
         articulosFam:[],
+
+        categorias:[],
+        
         openLogin: false,
         menu: false,
+        
+        /*Datos del usuario */
         user:{}
     },
 
@@ -42,7 +53,11 @@ export default new Vuex.Store({
         closeMenuFam(state){
             state.menu =false;
             console.log('ggg');
-        }
+        },
+
+        fillCategorias(state,categoria){
+            state.categorias = categoria;
+        },
 
       
     },
@@ -75,6 +90,20 @@ export default new Vuex.Store({
 
                 })
         },    
+
+        getCategorias({commit,state},uri){
+            const url = state.url+"familia/"+uri;
+            axios
+                .get(url)
+                .then(reponse=>{
+                    const categorias = reponse.data.categorias;
+                    const familia=reponse.data;
+                    commit('fillfamilia',familia);
+                    commit('fillCategorias',categorias);
+                    //commit('fillArticulosFam',articulosFam);
+
+                })
+        }
 
 
     },

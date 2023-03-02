@@ -35,15 +35,15 @@ export default {
             
         }
     },
-    created() {
-        this.$emit(`update:layout`, DefaulLayout);
+    created() {       
+        //this.getFamilias()
     },
     mounted(){
-        this.getFamilias()
+         this.$emit(`update:layout`, DefaulLayout);
     },
     methods: {
         ...mapActions([
-            'getFamilias'
+            //'getFamilias'
         ])
     },
 

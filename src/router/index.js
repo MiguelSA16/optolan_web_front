@@ -35,7 +35,7 @@ const routes = [
   //Rutas de familias
   {
     path: '/familia/:slug/articulos',
-    name: 'Familia.slug',
+    name: 'familia.slug',
     component: function(){
       return import('../views/familias/Articulos.vue')
     }
@@ -44,6 +44,13 @@ const routes = [
     path: '/nuestros-productos',
     component: function(){
       return import('../views/familias/ListarFamilias.vue')
+    }
+  },
+  {
+    path: '/familia/:slug/categorias',
+    name: 'categoria.slug',
+    component: function(){
+      return import('../views/familias/ListarCategorias.vue')
     }
   },
 
